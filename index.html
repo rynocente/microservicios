@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Personalizado con Scroll en el Mensaje</title>
+    <style>
+        /* Estilos del cuadro de diálogo */
+        .modal-dialog {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            max-height: 500px;
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        #confirm-message {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .modal-buttons button {
+            margin: 0 10px;
+        }
+    </style>
+    <script>
+	
+		function respuesta(rpta) {
+		
+			alert(rpta);
+		
+		
+		}
+	
+		function llamar() {
+		
+			var rpta = mostrarMensajeConfirm();
+			respuesta(rpta);
+		
+		}	
+		
+		 function mostrarMensajeConfirm() {
+            return mostrarConfirmConParrafo('¿Estás seguro?', function(respuesta) {
+                if (respuesta) {
+                   //console.log('El usuario hizo clic en Sí');
+					alert(respuesta);
+                } else {
+                    //console.log('El usuario hizo clic en No');
+					alert(respuesta);
+                }
+            });
+        }
+	
+        function mostrarConfirmConParrafo(mensaje, callback) {
+            var modalDialog = document.getElementById('modal-dialog');
+            modalDialog.style.display = 'block';
+
+            var loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non enim nec\n tellus dapibus congue. Cras id dictum est. Integer sit amet tortor ut nisl blandit aliquam.\n Nulla facilisi. Curabitur vel luctus orci. Praesent at tristique erat. Suspendisse sed\n metus in felis egestas venenatis. Pellentesque a ultricies quam. Nulla ut tortor eget nisl\n iaculis interdum. Etiam suscipit urna sit amet diam euismod viverra. Sed eleifend tincidunt\n ante vel convallis. Sed nec est libero. Vestibulum eget scelerisque justo. Nullam sit amet\n ipsum sit amet libero egestas aliquet. Vivamus maximus neque sit amet ante varius, vel\n rhoncus arcu gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non enim nec\n tellus dapibus congue. Cras id dictum est. Integer sit amet tortor ut nisl blandit aliquam.\n Nulla facilisi. Curabitur vel luctus orci. Praesent at tristique erat. Suspendisse sed\n metus in felis egestas venenatis. Pellentesque a ultricies quam. Nulla ut tortor eget nisl\n iaculis interdum. Etiam suscipit urna sit amet diam euismod viverra. Sed eleifend tincidunt\n ante vel convallis. Sed nec est libero. Vestibulum eget scelerisque justo. Nullam sit amet\n ipsum sit amet libero egestas aliquet. Vivamus maximus neque sit amet ante varius, vel\n rhoncus arcu gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non enim nec\n tellus dapibus congue. Cras id dictum est. Integer sit amet tortor ut nisl blandit aliquam.\n Nulla facilisi. Curabitur vel luctus orci. Praesent at tristique erat. Suspendisse sed\n metus in felis egestas venenatis. Pellentesque a ultricies quam. Nulla ut tortor eget nisl\n iaculis interdum. Etiam suscipit urna sit amet diam euismod viverra. Sed eleifend tincidunt\n ante vel convallis. Sed nec est libero. Vestibulum eget scelerisque justo. Nullam sit amet\n ipsum sit amet libero egestas aliquet. Vivamus maximus neque sit amet ante varius, vel\n rhoncus arcu gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non enim nec\n tellus dapibus congue. Cras id dictum est. Integer sit amet tortor ut nisl blandit aliquam.\n Nulla facilisi. Curabitur vel luctus orci. Praesent at tristique erat. Suspendisse sed\n metus in felis egestas venenatis. Pellentesque a ultricies quam. Nulla ut tortor eget nisl\n iaculis interdum. Etiam suscipit urna sit amet diam euismod viverra. Sed eleifend tincidunt\n ante vel convallis. Sed nec est libero. Vestibulum eget scelerisque justo. Nullam sit amet\n ipsum sit amet libero egestas aliquet. Vivamus maximus neque sit amet ante varius, vel\n rhoncus arcu gravida.';
+
+            document.getElementById('confirm-message').innerHTML = loremIpsum;
+
+            document.getElementById('confirm-yes').addEventListener('click', function() {
+                // Acción al hacer clic en "Sí"
+                callback(true);
+				modalDialog.style.display = 'none';
+				
+            });
+
+            document.getElementById('confirm-no').addEventListener('click', function() {
+                // Acción al hacer clic en "No"
+                callback(false);
+				modalDialog.style.display = 'none';
+				
+            });
+        }
+    </script>
+</head>
+<body>
+    <button onclick="llamar()">Mostrar Confirm con Scroll en el Mensaje</button>
+
+    <!-- Cuadro de diálogo -->
+    <div id="modal-dialog" class="modal-dialog">
+        <p id="confirm-message"></p>
+        <div class="modal-buttons">
+            <button id="confirm-yes">Sí</button>
+            <button id="confirm-no">No</button>
+        </div>
+    </div>
+</body>
+</html>
