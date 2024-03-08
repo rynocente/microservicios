@@ -1,2 +1,6 @@
 pruebas en github2 2025
 
+mis cambios
+nuevos
+para probar git stash
+
